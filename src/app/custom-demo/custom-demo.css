@@ -1,0 +1,102 @@
+.form-container {
+  max-width: 850px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background-color: #fdfaf7;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(60, 35, 20, 0.12);
+  border: 1px solid #e2d1c3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  color: #5d4037;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #d7ccc8;
+  padding-bottom: 15px;
+  font-weight: 700;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.full-width {
+  grid-column: 1 / span 2;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #4e342e;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #d7ccc8;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  padding: 12px;
+  background: #f4ece6;
+  border-radius: 8px;
+  border: 1px solid #e2d1c3;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-top: 25px;
+}
+
+.check-label {
+  cursor: pointer;
+  color: #5d4037;
+  font-weight: 600;
+}
+
+.error-text {
+  color: #a94442;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 4px;
+  display: block;
+}
+
+.submit-btn {
+  grid-column: 1 / span 2;
+  padding: 15px;
+  background-color: #6d4c41;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #5d4037;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #a94442 !important;
+  background-color: #fff8f8;
+}
+
+@media (max-width: 600px) {
+  form { grid-template-columns: 1fr; }
+  .full-width, .submit-btn { grid-column: 1; }
+}

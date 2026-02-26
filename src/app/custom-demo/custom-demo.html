@@ -1,0 +1,62 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <form [formGroup]="customForm" (ngSubmit)="onCustomSubmit()">
+
+    <div>
+      <label>Full Name</label>
+      <input type="text" formControlName="fullName"
+             [class.ng-invalid]="customForm.get('fullName')?.invalid && (customForm.get('fullName')?.touched || isSubmitted)">
+      <small class="error-text" *ngIf="customForm.get('fullName')?.invalid && (customForm.get('fullName')?.touched || isSubmitted)">
+        Name is required.
+      </small>
+    </div>
+
+    <div>
+      <label>Phone Number</label>
+      <input type="text" formControlName="phoneNumber" placeholder="Digits only">
+      <small class="error-text" *ngIf="customForm.get('phoneNumber')?.invalid && (customForm.get('phoneNumber')?.touched || isSubmitted)">
+        Valid phone is required.
+      </small>
+    </div>
+
+    <div>
+      <label>Date of Birth</label>
+      <input type="date" formControlName="dob">
+    </div>
+
+    <div>
+      <label>Department</label>
+      <select formControlName="department">
+        <option value="" disabled selected>Select Department</option>
+        <option value="IT">IT & Development</option>
+        <option value="HR">Human Resources</option>
+        <option value="Marketing">Marketing</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Account Type</label>
+      <div class="radio-group">
+        <label><input type="radio" formControlName="accountType" value="Personal"> Personal</label>
+        <label><input type="radio" formControlName="accountType" value="Business"> Business</label>
+      </div>
+    </div>
+
+    <div class="checkbox-container">
+       <label class="check-label">
+         <input type="checkbox" formControlName="newsletter"> Subscribe to Newsletter
+       </label>
+    </div>
+
+    <div class="full-width">
+      <label>Short Bio</label>
+      <textarea formControlName="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+      <small class="error-text" *ngIf="customForm.get('bio')?.invalid && (customForm.get('bio')?.touched || isSubmitted)">
+        Bio is required (max 200 chars).
+      </small>
+    </div>
+
+    <button type="submit" class="submit-btn">Save Custom Profile</button>
+
+  </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label>Username</label>
+      <input type="text" formControlName="username"
+             [class.is-invalid]="(userForm.get('username')?.invalid && (userForm.get('username')?.touched || isSubmitted))">
+      <small class="error-text" *ngIf="userForm.get('username')?.errors?.['required'] && (userForm.get('username')?.touched || isSubmitted)">
+        Username is required.
+      </small>
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="email" formControlName="email"
+             [class.is-invalid]="(userForm.get('email')?.invalid && (userForm.get('email')?.touched || isSubmitted))">
+      <small class="error-text" *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.touched || isSubmitted)">
+        Valid email is required.
+      </small>
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" formControlName="password"
+             [class.is-invalid]="(userForm.get('password')?.invalid && (userForm.get('password')?.touched || isSubmitted))">
+      <small class="error-text" *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.touched || isSubmitted)">
+        Password (min 6 chars) is required.
+      </small>
+    </div>
+
+    <div>
+      <label>Role</label>
+      <select formControlName="role" [class.is-invalid]="(userForm.get('role')?.invalid && (userForm.get('role')?.touched || isSubmitted))">
+        <option value="" disabled selected>Select a role</option>
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+        <option value="Guest">Guest</option>
+      </select>
+      <small class="error-text" *ngIf="userForm.get('role')?.invalid && (userForm.get('role')?.touched || isSubmitted)">
+        Please select a role.
+      </small>
+    </div>
+
+    <div>
+      <label>Gender</label>
+      <div class="radio-group" [class.group-invalid]="(userForm.get('gender')?.invalid && (userForm.get('gender')?.touched || isSubmitted))">
+        <label><input type="radio" formControlName="gender" value="Male"> Male</label>
+        <label><input type="radio" formControlName="gender" value="Female"> Female</label>
+      </div>
+    </div>
+
+    <div>
+      <label>Status</label>
+      <div class="radio-group" [class.group-invalid]="(userForm.get('status')?.invalid && (userForm.get('status')?.touched || isSubmitted))">
+        <label><input type="radio" formControlName="status" value="Permanent"> Permanent</label>
+        <label><input type="radio" formControlName="status" value="Probationary"> Probationary</label>
+      </div>
+    </div>
+
+    <div class="full-width">
+      <label>Comments</label>
+      <textarea formControlName="comments" rows="3" placeholder="Enter your notes here..."></textarea>
+    </div>
+
+    <button type="submit">Submit Reactive Form</button>
+
+  </form>
+</div>

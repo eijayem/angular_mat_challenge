@@ -1,0 +1,40 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+    <label>Username</label>
+    <input type="text" name="username" [(ngModel)]="user.username" required #uname="ngModel">
+
+    <label>Email</label>
+    <input type="email" name="email" [(ngModel)]="user.email" required email #uemail="ngModel">
+
+    <label>Password</label>
+    <input type="password" name="password" [(ngModel)]="user.password" required #upass="ngModel">
+
+    <label>Role</label>
+    <select name="role" [(ngModel)]="user.role" required #urole="ngModel">
+      <option value="" disabled selected>Select a role</option>
+      <option value="Admin">Admin</option>
+      <option value="User">User</option>
+      <option value="Guest">Guest</option>
+    </select>
+
+    <label>Gender</label>
+    <div class="radio-group">
+      <input type="radio" name="gender" [(ngModel)]="user.gender" value="Male" required> Male
+      <input type="radio" name="gender" [(ngModel)]="user.gender" value="Female" required> Female
+    </div>
+
+    <label>Status</label>
+    <div class="radio-group">
+      <input type="radio" name="status" [(ngModel)]="user.status" value="Permanent" required> Permanent
+      <input type="radio" name="status" [(ngModel)]="user.status" value="Probationary" required> Probationary
+    </div>
+
+    <label>Comments</label>
+    <textarea name="comments" [(ngModel)]="user.comments" rows="3" placeholder="Enter your notes here..."></textarea>
+
+    <button type="submit" [disabled]="!userForm.valid">Submit</button>
+
+  </form>
+</div>

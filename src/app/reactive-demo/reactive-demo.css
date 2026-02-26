@@ -1,0 +1,130 @@
+.form-container {
+  max-width: 850px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background-color: #fdfaf7;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(60, 35, 20, 0.12);
+  border: 1px solid #e2d1c3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  color: #5d4037;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #d7ccc8;
+  padding-bottom: 15px;
+  font-weight: 700;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.full-width {
+  grid-column: 1 / span 2;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4e342e;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #d7ccc8;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #3e2723;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #8d6e63;
+  box-shadow: 0 0 8px rgba(141, 110, 99, 0.25);
+}
+
+.radio-group {
+  display: flex;
+  gap: 30px;
+  padding: 12px 20px;
+  background: #f4ece6;
+  border-radius: 8px;
+  color: #5d4037;
+  border: 1px solid #e2d1c3;
+}
+
+.error-text {
+  color: #a94442;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-top: 4px;
+  display: block;
+}
+
+button {
+  grid-column: 1 / span 2;
+  padding: 15px;
+  margin-top: 1rem;
+  background-color: #6d4c41;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #5d4037;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+input.is-invalid,
+select.is-invalid {
+  border: 1.5px solid #a94442 !important;
+  background-color: #fff8f8;
+}
+
+.group-invalid {
+  border-color: #a94442 !important;
+}
+
+button {
+  grid-column: 1 / span 2;
+  padding: 15px;
+  margin-top: 1rem;
+  background-color: #6d4c41;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #bcaaa4;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #a94442;
+  background-color: #fff8f8;
+}
+
+@media (max-width: 600px) {
+  form { grid-template-columns: 1fr; }
+  .full-width, button { grid-column: 1; }
+}

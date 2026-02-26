@@ -1,0 +1,110 @@
+.viewport-wrapper {
+  min-height: 100vh;
+  background-color: #faf7f2;
+  transition: all 0.3s ease;
+}
+
+.summit-nav {
+  background: #bcaaa4 !important;
+  color: #3e2723 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.vertical-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.compact-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 15px !important;
+  border: 1px solid #d7ccc8;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(188, 170, 164, 0.1) !important;
+  overflow: hidden;
+}
+
+mat-card-header {
+  background: #efebe9;
+  padding: 12px;
+  border-bottom: 1px solid #d7ccc8;
+}
+
+mat-card-title {
+  color: #5d4037;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: #a1887f !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-done {
+  background-color: #d7ccc8 !important;
+}
+
+::ng-deep .mat-vertical-content {
+  padding: 0 24px 20px 24px !important;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-top: 10px;
+}
+
+mat-hint {
+  color: #6d4c41 !important;
+  font-weight: 500;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: rgba(161, 136, 127, 0.05) !important;
+}
+
+.step-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button[color="primary"] {
+  background-color: #d7ccc8 !important;
+  color: #3e2723 !important;
+}
+
+button[color="warn"] {
+  background-color: #a1887f !important;
+  color: white !important;
+}
+
+.dark-theme {
+  background-color: #3e3a38;
+}
+
+.dark-theme .compact-card {
+  background-color: #4e4a47;
+  color: #efebe9;
+  border-color: #8d6e63;
+}
+
+.dark-theme mat-card-header {
+  background: #5d5956;
+}
+
+.dark-theme mat-card-title {
+  color: #d7ccc8;
+}
+
+.bottom-info {
+  width: 100%;
+  max-width: 420px;
+  margin-top: 20px;
+}

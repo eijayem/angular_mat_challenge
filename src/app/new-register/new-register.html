@@ -1,0 +1,123 @@
+<div [class.dark-theme]="isDarkMode" class="viewport-wrapper">
+  <mat-toolbar class="summit-nav">
+    <mat-icon>assignment_ind</mat-icon>
+    <span>Registration 2026</span>
+    <span class="spacer"></span>
+    <mat-slide-toggle (change)="toggleTheme()" [checked]="isDarkMode">
+      <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </mat-slide-toggle>
+  </mat-toolbar>
+
+  <div class="vertical-container">
+    @if (!submitted) {
+      <mat-card class="compact-card">
+        <mat-card-header>
+          <mat-card-title>Registration Form</mat-card-title>
+        </mat-card-header>
+
+        <mat-stepper orientation="vertical" linear #stepper>
+          
+          <mat-step [stepControl]="formdata.get('accountInfo')!">
+            <form [formGroup]="$any(formdata.get('accountInfo'))">
+              <ng-template matStepLabel>Account Setup</ng-template>
+              
+              <mat-form-field appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="userName" required>
+              </mat-form-field>
+              
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" required>
+                <mat-hint>Letter first, 8+ alphanumeric</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" formControlName="confirmPassword" required>
+                @if (formdata.get('accountInfo')?.hasError('passwordMismatch') && formdata.get('accountInfo.confirmPassword')?.touched) {
+                  <mat-error>Passwords do not match</mat-error>
+                }
+              </mat-form-field>
+
+              <div class="step-nav">
+                <button mat-flat-button color="primary" matStepperNext type="button">Next</button>
+                <button mat-button (click)="onReset(stepper)" type="button">Reset</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="formdata.get('personalInfo')!">
+            <form [formGroup]="$any(formdata.get('personalInfo'))">
+              <ng-template matStepLabel>Verification</ng-template>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email" required>
+                @if (formdata.get('personalInfo.email')?.hasError('email')) {
+                  <mat-error>Valid email required</mat-error>
+                }
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Birth Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                @if (formdata.get('personalInfo.birthDate')?.hasError('tooYoung')) {
+                  <mat-error>Must be born 2006 or earlier</mat-error>
+                }
+              </mat-form-field>
+
+              <mat-radio-group formControlName="gender" style="display: flex; flex-direction: column; gap: 8px; margin: 10px 0;">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="step-nav">
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-flat-button color="primary" matStepperNext type="button">Next</button>
+                <button mat-button (click)="onReset(stepper)" type="button">Reset</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step>
+            <form [formGroup]="$any(formdata.get('additionalInfo'))">
+              <ng-template matStepLabel>Finalize</ng-template>
+              <div style="margin: 15px 0;">
+                <label style="color: #5d4037; font-weight: 500;">Skill Level</label>
+                <mat-slider min="1" max="10" discrete><input matSliderThumb formControlName="skillLevel"></mat-slider>
+              </div>
+
+              <mat-checkbox formControlName="agree">I accept the policies</mat-checkbox>
+
+              <div class="step-nav">
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-raised-button color="warn" (click)="onSubmit()" [disabled]="formdata.invalid">Submit</button>
+                <button mat-button (click)="onReset(stepper)" type="button">Reset</button>
+              </div>
+            </form>
+          </mat-step>
+
+        </mat-stepper>
+      </mat-card>
+    } @else {
+      <mat-card class="compact-card" style="padding: 40px; text-align: center;">
+        <mat-icon style="font-size: 50px; height: 50px; width: 50px; color: #795548;">eco</mat-icon>
+        <h2 style="color: #a1887f;">Done!</h2>
+        <p>Registration for {{formdata.value.accountInfo?.userName}} successful.</p>
+        <button mat-stroked-button color="primary" (click)="submitted = false; onReset(null)">Restart</button>
+      </mat-card>
+    }
+
+    <mat-accordion class="bottom-info">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Event Requirements</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Must be born in 2006 or earlier. Password requires 8 characters and a leading letter.</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
